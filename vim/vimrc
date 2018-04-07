@@ -1,0 +1,161 @@
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/vim-plug'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
+Plug 'christoomey/vim-system-copy'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'airblade/vim-gitgutter'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'ervandew/supertab'
+Plug 'flazz/vim-colorschemes'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'yggdroot/indentline'
+Plug 'reewr/vim-monokai-phoenix'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-surround'
+Plug 'townk/vim-autoclose'
+Plug 'shougo/neocomplete.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'gregsexton/gitv'
+Plug 'lervag/vimtex'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'vim-scripts/autoload_cscope.vim'
+Plug 'chazy/cscope_maps'
+Plug 'brookhong/cscope.vim'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'majutsushi/tagbar'
+Plug 'sjl/gundo.vim'
+call plug#end()
+
+syntax enable       	" enable syntax processing
+"set number              " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+set wildmenu            " visual autocomplete for command menu
+set lazyredraw          " redraw only when we need to.
+set showmatch           " highlight matching [{()}]
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+set foldenable          " enable folding
+set foldlevelstart=20
+set colorcolumn=81
+"set textwidth=80
+set mouse=a
+set tabstop=8
+set shiftwidth=4
+set softtabstop=8
+set expandtab
+set autoindent
+set smartindent
+set smarttab
+set copyindent
+set preserveindent
+set smartcase
+set ignorecase
+
+"freebsd code
+"set noexpandtab
+"set shiftwidth=8
+"
+let g:gitgutter_enabled = 1
+
+" Shit+Tab to insert Tab
+inoremap <S-Tab> <C-V><Tab>
+
+filetype plugin indent on
+
+highlight clear SignColumn
+
+let mapleader = ","
+
+filetype plugin on
+filetype plugin indent on
+colorscheme SlateDark
+
+set laststatus=2	" show the status bar
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='cool'
+
+let g:neocomplete#enable_at_startup = 1
+
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
+
+" split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" auto going to last line
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" nerdtree
+map <leader>nn :NERDTreeToggle<CR>
+
+"yankstack
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
+" buffer exploration
+nnoremap <C-b> :bnext<CR>
+
+" cscope
+let g:cscope_silent=1
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
+
+" ctags support
+set tags+=./tags;/,tags;/
+set tags+=/var/tmp/tags
+
+nnoremap <F5> :GundoToggle<CR>
+nmap <F8> :TagbarToggle<CR>
+
+" syntestic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+
+" YouCompleteMe parameters
+"let g:ycm_confirm_extra_conf = 0
+"nnoremap <leader>yd :YcmCompleter GetDoc<CR>
+"nnoremap <leader>yt :YcmCompleter GetType<CR>
+"nnoremap <leader>yg :YcmCompleter GoTo<CR>
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_global_ycm_extra_conf = "/home/stefano/.vim_runtime/sources_non_forked/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+" disable error report
+"let g:ycm_enable_diagnostic_signs = 0
+"let g:ycm_enable_diagnostic_highlighting = 0
