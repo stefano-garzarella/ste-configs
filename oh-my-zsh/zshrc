@@ -62,7 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gitfast git-extras osx wd autojump svn dircycle colorize colored-man sudo cp web-search brew brew-cask sublime history history-substring-search zsh-syntax-highlighting docker
+  git gitfast git-extras osx wd autojump svn dircycle colorize colored-man sudo cp web-search brew brew-cask sublime history history-substring-search zsh-syntax-highlighting docker archlinux
 )
 
 export EDITOR='vim'
@@ -104,6 +104,15 @@ source $ZSH/oh-my-zsh.sh
 
 if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
     eval `keychain --eval id_rsa`
+
+    if [[ "$HOST" == "stefano-l450" ]]; then
+        # lauterbach
+        export T32SYS=/opt/t32
+        export T32TMP=/tmp
+        export T32ID=T32
+        export ADOBE_PATH=/opt/Adobe/Reader9
+        export PATH=$PATH:/opt/t32/bin/pc_linux64
+    fi
 fi
 if [[ "$OSTYPE" == darwin* ]]; then
     export PATH="$PATH:/usr/local/texlive/2014/bin/x86_64-darwin"
