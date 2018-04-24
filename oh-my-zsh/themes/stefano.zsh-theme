@@ -10,7 +10,7 @@
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('$fg[blue]`basename $VIRTUAL_ENV`%{$reset_color%}') '
+    [ $VIRTUAL_ENV ] && echo '('%F{blue}`basename $VIRTUAL_ENV`%f') '
 }
 PR_GIT_UPDATE=1
 
@@ -19,8 +19,8 @@ setopt prompt_subst
 autoload -U add-zsh-hook
 autoload -Uz vcs_info
 
-#use extended color pallete if available
-if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+#use extended color palette if available
+if [[ $terminfo[colors] -ge 256 ]]; then
     turquoise="%F{81}"
     orange="%F{166}"
     purple="%F{135}"
@@ -30,14 +30,14 @@ if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     green="%F{2}"
     red="%F{1}"
 else
-    turquoise="$fg[cyan]"
-    orange="$fg[yellow]"
-    purple="$fg[magenta]"
-    hotpink="$fg[red]"
-    limegreen="$fg[green]"
-    blue="$fg[blue]"
-    green="$fg[green]"
-    red="$fg[red]"
+    turquoise="%F{cyan}"
+    orange="%F{yellow}"
+    purple="%F{magenta}"
+    hotpink="%F{red}"
+    limegreen="%F{green}"
+    blue="%F{blue}"
+    green="%F{green}"
+    red="%F{red}"
 fi
 
 # enable VCS systems you use
@@ -54,7 +54,7 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %a - action (e.g. rebase-i)
 # %R - repository path
 # %S - path in the repository
-PR_RST="%{${reset_color}%}"
+PR_RST="%f"
 FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
 FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
 FMT_UNSTAGED="%{$orange%}●"
@@ -68,7 +68,7 @@ zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 
 function steeef_preexec {
-    case "$(history $HISTCMD)" in
+    case "$2" in
         *git*)
             PR_GIT_UPDATE=1
             ;;
@@ -102,9 +102,9 @@ function steeef_precmd {
 add-zsh-hook precmd steeef_precmd
 
 #PROMPT=$'
-PROMPT='%(?, ,%{$fg[red]%}FAIL: $?%{$reset_color%}
+PROMPT='%(?, ,%{$red%}FAIL: $?${PR_RST}
 )
-%{$blue%}%n%{$reset_color%}@%{$green%}%m%{$reset_color%}:%{$limegreen%}%~%{$reset_color%} $vcs_info_msg_0_$(virtualenv_info)%{$reset_color%}
+%{$blue%}%n${PR_RST}@%{$green%}%m${PR_RST}:%{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)${PR_RST}
 > '
 
-RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
+RPROMPT='%{$fg[green]%}[%*]${PR_RST}'
