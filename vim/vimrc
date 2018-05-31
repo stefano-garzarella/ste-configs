@@ -25,13 +25,15 @@ Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'gregsexton/gitv'
 Plug 'lervag/vimtex'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'vim-scripts/autoload_cscope.vim'
 Plug 'chazy/cscope_maps'
-Plug 'brookhong/cscope.vim'
+Plug 'jcliang/vim-cscope-utils'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim'
 call plug#end()
+
+"Plug 'brookhong/cscope.vim'
+"Plug 'vim-scripts/autoload_cscope.vim'
 
 syntax enable       	" enable syntax processing
 "set number              " show line numbers
