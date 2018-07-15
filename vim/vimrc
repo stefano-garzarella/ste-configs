@@ -30,6 +30,7 @@ Plug 'jcliang/vim-cscope-utils'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim'
+Plug 'shougo/neossh.vim'
 call plug#end()
 
 "Plug 'brookhong/cscope.vim'
