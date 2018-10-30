@@ -65,7 +65,8 @@ set ignorecase
 "freebsd code
 set noexpandtab
 set shiftwidth=8
-"
+set backspace=indent,eol,start
+
 let g:gitgutter_enabled = 1
 
 " Shit+Tab to insert Tab

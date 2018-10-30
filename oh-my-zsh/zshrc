@@ -62,7 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gitfast git-extras osx wd autojump svn dircycle colorize colored-man sudo cp web-search brew brew-cask sublime history history-substring-search zsh-syntax-highlighting docker archlinux
+  git gitfast git-extras wd autojump svn dircycle colorize colored-man sudo cp web-search sublime history history-substring-search zsh-syntax-highlighting docker archlinux
 )
 
 export EDITOR='vim'
@@ -71,7 +71,6 @@ export PAGER='less'
 
 export TERM="xterm-256color"
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -105,6 +104,15 @@ source $ZSH/oh-my-zsh.sh
 if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
     eval `keychain --eval id_rsa`
 
+    {
+	    source /etc/os-release
+	    if [[ "$ID" == fedora ]]; then
+		    plugins=($plugins dnf)
+	    elif [[ "$ID" == arch* ]]; then
+		    plugins=($plugins archlinux)
+	    fi
+    }
+
     if [[ "$HOST" == "stefano-l450" ]]; then
         # lauterbach
         export T32SYS=/opt/t32
@@ -113,8 +121,12 @@ if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
         export ADOBE_PATH=/opt/Adobe/Reader9
         export PATH=$PATH:/opt/t32/bin/pc_linux64
     fi
-fi
-if [[ "$OSTYPE" == darwin* ]]; then
+elif [[ "$OSTYPE" == darwin* ]]; then
     export PATH="$PATH:/usr/local/texlive/2014/bin/x86_64-darwin"
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+    LC_CTYPE=en_US.UTF-8
+    LC_ALL=en_US.UTF-8
+    plugins=($plugins osx brew brew-cask)
 fi
+
+source $ZSH/oh-my-zsh.sh
