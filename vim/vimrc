@@ -63,8 +63,8 @@ set smartcase
 set ignorecase
 
 "freebsd code
-"set noexpandtab
-"set shiftwidth=8
+set noexpandtab
+set shiftwidth=8
 "
 let g:gitgutter_enabled = 1
 
