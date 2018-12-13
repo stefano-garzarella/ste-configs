@@ -62,8 +62,10 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gitfast git-extras wd autojump svn dircycle colorize colored-man sudo cp web-search sublime history history-substring-search zsh-syntax-highlighting docker archlinux
+  git gitfast git-extras wd autojump svn dircycle colorize colored-man sudo cp web-search sublime history history-substring-search zsh-syntax-highlighting docker rust cargo
 )
+#plugins=($plugins kubectl minikube)
+plugins=($plugins minikube)
 
 export EDITOR='vim'
 export VISUAL='vim'
@@ -112,6 +114,9 @@ if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
 		    plugins=($plugins archlinux)
 	    fi
     }
+    # Rust
+    export PATH="$HOME/.cargo/bin:$PATH"
+    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
     if [[ "$HOST" == "stefano-l450" ]]; then
         # lauterbach

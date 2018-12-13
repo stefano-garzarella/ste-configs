@@ -31,6 +31,8 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim'
 Plug 'shougo/neossh.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 
 "Plug 'brookhong/cscope.vim'
@@ -163,3 +165,10 @@ nmap <F8> :TagbarToggle<CR>
 " disable error report
 "let g:ycm_enable_diagnostic_signs = 0
 "let g:ycm_enable_diagnostic_highlighting = 0
+
+
+" Rust
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
