@@ -114,6 +114,13 @@ if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
 		    plugins=($plugins archlinux)
 	    fi
     }
+
+    # My app
+    export PATH="$HOME/bin:$PATH"
+
+    # PIP
+    export PATH="$HOME/.local/bin:$PATH"
+
     # Rust
     export PATH="$HOME/.cargo/bin:$PATH"
     export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
