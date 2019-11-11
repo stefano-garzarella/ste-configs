@@ -26,15 +26,18 @@ Plug 'gregsexton/gitv'
 Plug 'lervag/vimtex'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'chazy/cscope_maps'
-Plug 'jcliang/vim-cscope-utils'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim'
 Plug 'shougo/neossh.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+Plug 'jsfaint/gen_tags.vim'
+Plug 'jakykong/vim-zim'
+Plug 'joanrivera/vim-zimwiki-syntax'
 call plug#end()
 
+"Plug 'jcliang/vim-cscope-utils'
 "Plug 'brookhong/cscope.vim'
 "Plug 'vim-scripts/autoload_cscope.vim'
 
@@ -116,27 +119,6 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " buffer exploration
 nnoremap <C-b> :bnext<CR>
-
-" cscope
-let g:cscope_silent=1
-nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-nnoremap <leader>l :call ToggleLocationList()<CR>
-" s: Find this C symbol
-nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
-" g: Find this definition
-nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
-" d: Find functions called by this function
-nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
-" c: Find functions calling this function
-nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
-" t: Find this text string
-nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
-" e: Find this egrep pattern
-nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
-" f: Find this file
-nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
-" i: Find files #including this file
-nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 
 " ctags support
 set tags+=./tags;/,tags;/
