@@ -104,10 +104,17 @@ function steeef_precmd {
 }
 add-zsh-hook precmd steeef_precmd
 
+function _vi_status() {
+  if {echo $fpath | grep -q "plugins/vi-mode"}; then
+    echo "$(vi_mode_prompt_info)"
+  fi
+}
+
+
 #PROMPT=$'
 PROMPT='%(?, ,%{$red%}FAIL: $?${PR_RST}
 )
 %{$blue%}%n${PR_RST}@%{$green%}%m${PR_RST}:%{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)${PR_RST}
 > '
 
-RPROMPT='%{$fg[green]%}[%*]${PR_RST}'
+RPROMPT='$(_vi_status) %{$fg[green]%}[%*]${PR_RST}'
