@@ -110,6 +110,8 @@ function _vi_status() {
   fi
 }
 
+_lineup=$'\e[1A'
+_linedown=$'\e[1B'
 
 #PROMPT=$'
 PROMPT='%(?, ,%{$red%}FAIL: $?${PR_RST}
@@ -117,4 +119,4 @@ PROMPT='%(?, ,%{$red%}FAIL: $?${PR_RST}
 %{$blue%}%n${PR_RST}@%{$green%}%m${PR_RST}:%{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)${PR_RST}
 > '
 
-RPROMPT='$(_vi_status) %{$fg[green]%}[%*]${PR_RST}'
+RPROMPT='%{${_lineup}%}$(_vi_status) %{$fg[green]%}[%*]${PR_RST}%{${_linedown}%}'
