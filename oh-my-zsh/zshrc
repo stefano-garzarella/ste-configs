@@ -125,6 +125,9 @@ if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
     export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
+    # libvirt
+    export LIBVIRT_DEFAULT_URI="qemu:///system"
+
     if [[ "$HOST" == "stefano-l450" ]]; then
         # lauterbach
         export T32SYS=/opt/t32
