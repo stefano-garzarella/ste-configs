@@ -77,9 +77,17 @@ set preserveindent
 set smartcase
 set ignorecase
 
-"freebsd code
+"freebsd/linux code
 "set noexpandtab
 "set shiftwidth=8
+let g:linuxsty_patterns = [ "/usr/src/", "/linux", "/fedora-linux" ]
+autocmd BufNewFile,BufRead /home/stefano/repos/linux* call SetLinuxOptions()
+autocmd BufNewFile,BufRead /home/stefano/repos/fedora-linux* call SetLinuxOptions()
+function SetLinuxOptions()
+    set list lcs=tab:\|\ 
+    hi SpecialKey ctermfg=DarkGrey ctermbg=None
+endfunction
+
 set backspace=indent,eol,start
 
 let g:gitgutter_enabled = 1
