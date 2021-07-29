@@ -104,15 +104,17 @@ export TERM="xterm-256color"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
-    eval `keychain --eval id_rsa`
+    if (( $+commands[keychain] )); then
+       eval `keychain --eval id_rsa`
+    fi
 
     {
-	    source /etc/os-release
-	    if [[ "$ID" == fedora ]]; then
-		    plugins=($plugins dnf)
-	    elif [[ "$ID" == arch* ]]; then
-		    plugins=($plugins archlinux)
-	    fi
+        source /etc/os-release
+        if [[ "$ID" == fedora ]]; then
+    	    plugins=($plugins dnf)
+        elif [[ "$ID" == arch* ]]; then
+    	    plugins=($plugins archlinux)
+        fi
     }
 
     # My app
@@ -122,8 +124,10 @@ if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 
     # Rust
-    export PATH="$HOME/.cargo/bin:$PATH"
-    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+    if (( $+commands[rustc] )); then
+        export PATH="$HOME/.cargo/bin:$PATH"
+        export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+    fi
 
     # libvirt
     export LIBVIRT_DEFAULT_URI="qemu:///system"
