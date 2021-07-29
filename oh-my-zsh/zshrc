@@ -145,3 +145,11 @@ elif [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+#compdef lab
+function _lab {
+    source <(lab _carapace zsh)
+}
+
+if compquote '' 2>/dev/null; then _lab; else compdef _lab lab; fi
+
