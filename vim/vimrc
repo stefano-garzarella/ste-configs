@@ -32,15 +32,24 @@ Plug 'sjl/gundo.vim'
 Plug 'shougo/neossh.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-Plug 'jsfaint/gen_tags.vim'
 Plug 'jakykong/vim-zim'
 Plug 'joanrivera/vim-zimwiki-syntax'
 Plug 'vimwiki/vimwiki'
+Plug 'jsfaint/gen_tags.vim'
+Plug 'universal-ctags/ctags'
+Plug 'romainl/vim-cool'
+Plug 'vivien/vim-linux-coding-style'
 call plug#end()
 
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
+"Plug 'jsfaint/gen_tags.vim'
 "Plug 'jcliang/vim-cscope-utils'
 "Plug 'brookhong/cscope.vim'
 "Plug 'vim-scripts/autoload_cscope.vim'
+
+" vim-cool
+let g:CoolTotalMatches = 1
 
 syntax enable       	" enable syntax processing
 "set number              " show line numbers
