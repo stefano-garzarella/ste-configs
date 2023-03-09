@@ -145,7 +145,7 @@ elif [[ "$OSTYPE" == darwin* ]]; then
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
     LC_CTYPE=en_US.UTF-8
     LC_ALL=en_US.UTF-8
-    plugins=($plugins osx brew brew-cask)
+    plugins=($plugins macos brew)
 fi
 
 source $ZSH/oh-my-zsh.sh
