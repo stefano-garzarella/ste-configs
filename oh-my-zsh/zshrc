@@ -62,7 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  autojump git gitfast git-extras wd svn dircycle colorize colored-man-pages sudo cp web-search sublime history history-substring-search docker rust ansible emoji copyfile colorize gitignore golang pip vscode
+  autojump git gitfast git-extras wd svn dircycle colorize colored-man-pages sudo cp web-search sublime history history-substring-search docker rust ansible emoji copyfile colorize gitignore golang pip vscode copypath copybuffer copyfile
 )
 #plugins=($plugins kubectl minikube)
 #plugins=($plugins minikube)
@@ -118,6 +118,8 @@ if [[ "$OSTYPE" == linux* || "$OSTYPE" == freebsd* ]]; then
     	    plugins=($plugins archlinux)
         fi
     }
+
+    plugins=($plugins systemd)
 
     # My app
     export PATH="$HOME/bin:$PATH"
