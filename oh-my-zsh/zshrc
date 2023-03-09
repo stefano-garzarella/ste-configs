@@ -65,14 +65,16 @@ plugins=(
   autojump git gitfast git-extras wd svn dircycle colorize colored-man-pages sudo cp web-search sublime history history-substring-search docker rust ansible emoji copyfile colorize gitignore golang pip vscode
 )
 #plugins=($plugins kubectl minikube)
-plugins=($plugins minikube)
+#plugins=($plugins minikube)
+plugins=($plugins git-prompt)
+ZSH_THEME_GIT_PROMPT_CACHE=1
+ZSH_THEME_GIT_SHOW_UPSTREAM=1
 
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 
 export TERM="xterm-256color"
-
 
 # User configuration
 
