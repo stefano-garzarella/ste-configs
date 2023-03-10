@@ -66,9 +66,9 @@ plugins=(
 )
 #plugins=($plugins kubectl minikube)
 #plugins=($plugins minikube)
-plugins=($plugins git-prompt)
-ZSH_THEME_GIT_PROMPT_CACHE=1
-ZSH_THEME_GIT_SHOW_UPSTREAM=1
+#plugins=($plugins git-prompt)
+#ZSH_THEME_GIT_PROMPT_CACHE=1
+#ZSH_THEME_GIT_SHOW_UPSTREAM=1
 
 export EDITOR='vim'
 export VISUAL='vim'
