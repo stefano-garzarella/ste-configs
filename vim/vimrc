@@ -150,8 +150,9 @@ nnoremap <C-b> :bnext<CR>
 set tags+=./tags;/,tags;/
 set tags+=/var/tmp/tags
 
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F9> :GundoToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+nnoremap <C-x> :cclose<CR>
 
 " syntestic
 "set statusline+=%#warningmsg#
