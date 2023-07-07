@@ -41,6 +41,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'universal-ctags/ctags'
 Plug 'romainl/vim-cool'
 Plug 'vivien/vim-linux-coding-style'
+Plug 'rizsotto/bear'
 call plug#end()
 
 "Plug 'ludovicchabant/vim-gutentags'
